@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
+import SeasonBody from "./SeasonBody";
 import TVRepository from '../repositories/TVRepository';
 
 class Season extends Component {
@@ -7,7 +8,6 @@ class Season extends Component {
     super(props, context);
     this.state = {
       open: false,
-      isLoading: false,
       initialized: false,
       tvId: this.props.tvId,
       overview: this.props.details,
@@ -19,7 +19,7 @@ class Season extends Component {
   panelToggleHandler(evt) {
     let open = !this.state.open;
     this.setState({ open: open });
-  
+
     if (!this.state.initialized && open) {
       this.init();
     }
@@ -28,30 +28,20 @@ class Season extends Component {
   init() {
     this.setState({ isLoading: true });
 
-    this.repo.getSeason(this.state.tvId,this.state.overview.season_number)
-    .then(results => {
+    this.repo.getSeason(this.state.tvId, this.state.overview.season_number)
+      .then(results => {
         return results.json();
-    })
-    .then(data => {
+      })
+      .then(data => {
         this.setState({
-            details: data,
-            isLoading: false,
-            initialized : true
+          details: data,
+          isLoading: false,
+          initialized: true
         });
-    });
+      });
   }
 
-
   render() {
-    let body = null;
-    if(this.state.isLoading){
-      body = "Loading..."
-    }
-
-    if(this.state.initialized){
-      body = JSON.stringify(this.state.details);
-    }
-
     return (
       <Panel id="Season"
         bsStyle="success"
@@ -64,7 +54,7 @@ class Season extends Component {
         </Panel.Heading>
         <Panel.Collapse>
           <Panel.Body>
-            {body}
+            <SeasonBody details={this.state.details}/>
           </Panel.Body>
         </Panel.Collapse>
       </Panel>

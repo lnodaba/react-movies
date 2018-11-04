@@ -31,6 +31,9 @@
   }
 }
 
+/*
+    THIS IS WHERE I STARTED TO ACT LIKE A PERSON WHO KNOWS CSS
+*/
 
 .features {
     position:relative;
@@ -40,13 +43,6 @@
   position: absolute;
   bottom: 30px;
   right: 25px;
-}
-.overflow {
-
-/**
- * Required properties to achieve text-overflow
- */
-
 }
 
 .ellipsis { 
@@ -63,3 +59,43 @@ div.nopadding {
 }
 
 .pointer {cursor: pointer;}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+  position:fixed;
+  background: white;
+  width: 90%;
+  height: 80%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.episode-modal{
+  max-height: 80%;
+}
+
+.max360{
+  max-height: 360px;
+  overflow: auto;
+}
+
+.modal-button{
+  margin-bottom: 22px !important;
+}

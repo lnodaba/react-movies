@@ -4,7 +4,7 @@ import { Route, Switch  } from "react-router-dom";
 import TVRepository from './repositories/TVRepository'
 import Home from "./home/Home"
 import Detail from './detail/Detail';
-import NoMatch from './errors/NoMatch';
+import NoMatch from './common/NoMatch';
 
 class App extends Component {
 

@@ -34,5 +34,6 @@ export default class TVRepository{
         let url = `${apiSettings.apiEndpoint}/3/tv/${tvId}/season/${season_number}?api_key=${apiSettings.apiKeyV3}&language=en-US`;
 
         return fetch(url);
+        
     }
 }
