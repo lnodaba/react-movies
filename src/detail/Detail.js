@@ -47,6 +47,7 @@ class Detail extends Component {
         };
         this.repo = new TVRepository();
     }
+    
     componentWillMount() {
         this.setTVShow();
     }

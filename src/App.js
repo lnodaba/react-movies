@@ -5,11 +5,12 @@ import TVRepository from './repositories/TVRepository'
 import Home from "./home/Home"
 import Detail from './detail/Detail';
 import NoMatch from './common/NoMatch';
-
+import { connect } from 'react-redux'
 class App extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {
       searchTerm: "",
       movies: [],
@@ -63,4 +64,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    state
+  }
+}
+
+export default connect(mapStateToProps)(App)
