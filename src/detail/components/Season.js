@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
 import SeasonBody from "./SeasonBody";
-import TVRepository from '../repositories/TVRepository';
+import TVRepository from '../../repositories/TVRepository';
 
 class Season extends Component {
   constructor(props, context) {

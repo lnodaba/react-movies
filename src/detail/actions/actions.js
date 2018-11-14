@@ -30,7 +30,7 @@ export function receiveShows(searchTerm, json) {
 }
 
 /* 
-    Fetchers for the TV Shows
+    Async Actions (Fetchers for the TV Shows)
 */
 
 function fetchShows(searchTerm) {
@@ -47,10 +47,11 @@ function fetchShows(searchTerm) {
 
 function shouldFetchShows(state, searchTerm) {
   const {items, isFetching } = state.tvShows;
+  const minSearchLenght = 3;
 
   if (isFetching) {
     return false
-  } else if (searchTerm.length > 0 && items.length === 0) {
+  } else if (searchTerm.length > minSearchLenght && items.length === 0) {
     return true
   } else {
     return state.tvShows.didInvalidate
@@ -93,7 +94,7 @@ export function receiveShowDetails(tvId, json) {
 
 
 /* 
-    Fetchers for the Shows Details
+    Async Actions (Fetchers for the Shows Details)
 */
 
 function fetchShowDetails(tvId) {

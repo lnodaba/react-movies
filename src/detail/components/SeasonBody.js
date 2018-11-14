@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Modal from '../common/Modal'
-import { decorated, itemSettings } from '../utils/decorated';
+import Modal from '../../common/Modal'
+import { decorated, itemSettings } from '../../utils/decorated';
 import { Thumbnail } from 'react-bootstrap';
 
 let Overview = (props) => {

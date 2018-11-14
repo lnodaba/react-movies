@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Thumbnail } from 'react-bootstrap';
-import Utils  from '../utils/Utils';
+import Utils  from '../../utils/Utils';
 
 class Creator extends Component {
 

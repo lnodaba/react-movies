@@ -1,21 +1,49 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { searchShow, fetchShowsIfNeeded } from '../detail/actions/actions';
 
 class Search extends Component {
 
-    render(props) {
+    render() {
         return (
             <div className="navbar-form navbar-right">
-            <div className="form-group">
-                <input type="text" className="form-control" placeholder="Search" 
-                 value={this.props.searchTerm}
-                 onChange={this.props.onChange}
-                 onKeyPress={this.props.onEnter}
-                />
-            </div>
-            <button type="submit" className="btn btn-default" onClick={this.props.onClick}>Search</button>
+                <div className="form-group">
+                    <input type="text" className="form-control" placeholder="Search"
+                        value={this.props.searchTerm}
+                        onChange={evt => { this.props.onSearchTermChange(evt); }}
+                        onKeyUp={(evt) => { this.props.onEnter(evt, this.props.searchTerm); }}
+                    />
+                </div>
+                <button type="submit" className="btn btn-default" onClick={() => this.props.onSearch(this.props.searchTerm)}>Search</button>
             </div>
         );
     }
 }
 
-export default Search;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSearchTermChange: (evt) => {
+            const searchTerm = evt.target.value;
+            dispatch(searchShow(searchTerm));
+        },
+        onEnter: (evt, searchTerm) => {
+            if (evt.key === 'Enter') {
+                dispatch(fetchShowsIfNeeded(searchTerm));
+            }
+        },
+        onSearch: (searchTerm) => {
+            dispatch(fetchShowsIfNeeded(searchTerm));
+        }
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        searchTerm: state.tvShows.searchTerm
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Search)

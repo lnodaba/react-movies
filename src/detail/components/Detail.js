@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import TVRepository from '../repositories/TVRepository';
+import TVRepository from '../../repositories/TVRepository';
 import Poster from './Poster';
 import ShowDetails from './ShowDetails';
 import Creator from './Creator';

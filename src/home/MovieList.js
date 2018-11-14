@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-
+import { connect } from 'react-redux'
 class MovieList extends Component {
 
   createInfo(value){
@@ -50,4 +50,13 @@ class MovieList extends Component {
   }
 }
 
-export default MovieList;
+
+const mapStateToProps = state => {
+  return {
+    movies: state.tvShows.items
+  }
+}
+
+export default connect(
+  mapStateToProps,
+)(MovieList)
