@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class MovieDetails extends Component {
+class DetailShow extends Component {
 
     render() {
         return (
@@ -26,4 +26,4 @@ class MovieDetails extends Component {
     }
 }
 
-export default MovieDetails;
+export default DetailShow;

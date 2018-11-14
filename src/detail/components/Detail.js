@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import DetailHeader from './DetailHeader';
 import TVRepository from '../../repositories/TVRepository';
-import Poster from './Poster';
-import ShowDetails from './ShowDetails';
-import Creator from './Creator';
+import DetailPoster from './DetailPoster';
+import DetailShow from './DetailShow';
+import DetailCreator from './DetailCreator';
 import Season from './Season';
 
 
@@ -30,9 +30,9 @@ let itemSettings = (title, columnSetting) => {
     };
 };
 
-const DecoratedPoster = decorated(Poster, itemSettings("Poster :", "col-md-3 nopadding"));
-const DecoratedCreator = decorated(Creator, itemSettings("Created By :", "col-md-3 nopadding"));
-const DecoratedShowDetails = decorated(ShowDetails, itemSettings("Movie Details :", "col-md-6"));
+const DecoratedPoster = decorated(DetailPoster, itemSettings("Poster :", "col-md-3 nopadding"));
+const DecoratedCreator = decorated(DetailCreator, itemSettings("Created By :", "col-md-3 nopadding"));
+const DecoratedShowDetails = decorated(DetailShow, itemSettings("Movie Details :", "col-md-6"));
 
 
 class Detail extends Component {
@@ -78,7 +78,7 @@ class Detail extends Component {
         return (
             <> {/* Some magic to have multiple childs for a component, if you dont wan't to return only one*/}
                 <div className="container" >
-                    <Header title={details.name} history={this.props.history} />
+                    <DetailHeader title={details.name} history={this.props.history} />
                     <DecoratedPoster image={details.poster_path}/>
                     <DecoratedShowDetails details={details}/>
                     <DecoratedCreator creators={details.created_by} />

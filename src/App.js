@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch  } from "react-router-dom";
-import Home from "./home/Home"
+import Home from "./home/components/Home"
 import Detail from './detail/components/Detail';
 import NoMatch from './common/NoMatch';
-import { connect } from 'react-redux'
-class App extends Component {
 
- 
-
-  
+export default class App extends Component {
 
   render() {
     return (
@@ -27,11 +23,3 @@ class App extends Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    state
-  }
-}
-
-export default connect(mapStateToProps)(App)

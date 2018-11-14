@@ -1,29 +1,29 @@
 import * as actions from '../actions/actions';
 
-export function selectedTvShowDetails(
+export function tvShows(
     state = {
-        tvId: null,
-        isFetching: true,
+        isFetching: false,
         didInvalidate: false, //for future stuff if we want some invariant to reload the data from the server
-        details: null
+        searchTerm: "",
+        items: []
     }, action) {
+
     switch (action.type) {
-        case actions.SELECT_SHOW:
+        case actions.SEARCH_SHOWS:
             return Object.assign({}, state, {
-                tvId: action.tvId,
-                details : null
+                searchTerm: action.searchTerm,
+                items : []
             });
-        case actions.REQUEST_SHOW_DETAILS:
+        case actions.REQUEST_SHOWS:
             return Object.assign({}, state, {
                 isFetching: true
             });
-        case actions.RECEIVE_SHOW_DETAILS:
+        case actions.RECEIVE_SHOWS:
             return Object.assign({}, state, {
                 isFetching: false,
-                details: action.details
+                items: action.items
             });
         default:
             return state
     }
 }
-

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Search from './Search';
+import HomeSearch from './HomeSearch';
 
-class Header extends Component {
+class HomeHeader extends Component {
 
     render(props) {
         return (
@@ -10,16 +10,11 @@ class Header extends Component {
                 <div className="navbar-header">
                     <a className="navbar-brand" href="\">React Movies</a>
                 </div>
-                <Search
-                    searchTerm={this.props.searchTerm}
-                    onChange={this.props.onChange}
-                    onClick={this.props.onClick}
-                    onEnter={this.props.onEnter}
-                />
+                <HomeSearch/>
             </div>
         </div>
         );
     }
 }
 
-export default Header;
+export default HomeHeader;

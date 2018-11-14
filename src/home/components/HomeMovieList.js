@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
-class MovieList extends Component {
+
+class HomeMovieList extends Component {
 
   createInfo(value){
     return (<p>
@@ -58,5 +59,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(
-  mapStateToProps,
-)(MovieList)
+  mapStateToProps
+)(HomeMovieList)

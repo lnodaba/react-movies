@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Poster extends Component {
+class DetailPoster extends Component {
 
     render(props) {
         return (
@@ -11,4 +11,4 @@ class Poster extends Component {
     }
 }
 
-export default Poster;
+export default DetailPoster;

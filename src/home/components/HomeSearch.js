@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { searchShow, fetchShowsIfNeeded } from '../detail/actions/actions';
+import { searchShow, fetchShowsIfNeeded } from '../actions/actions';
 
-class Search extends Component {
+class HomeSearch extends Component {
 
     render() {
         return (
@@ -28,6 +28,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         onEnter: (evt, searchTerm) => {
             if (evt.key === 'Enter') {
+                console.log("I'm here wtf?");
                 dispatch(fetchShowsIfNeeded(searchTerm));
             }
         },
@@ -46,4 +47,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Search)
+)(HomeSearch)
