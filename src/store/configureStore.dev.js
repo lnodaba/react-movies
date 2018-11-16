@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
     I'm not using the belos cause it turned out doesn't really worth the effort for this particular example
     I left here to demonstrate reducer combining.
   */
-  selectedTvShowDetails 
+  selectedTvShowDetails
 });
 
 

@@ -1,29 +1,22 @@
-import * as actions from '../actions/actions';
+import { types } from '../actions/actions';
+import { createReducers } from 'redux-arc';
 
-export function tvShows(
-    state = {
-        isFetching: false,
-        didInvalidate: false, //for future stuff if we want some invariant to reload the data from the server
-        searchTerm: "",
+const HANDLERS = {
+    [types.SEARCH]: (state, action) => Object.assign({}, state, {
+        searchTerm: action.payload,
         items: []
-    }, action) {
-
-    switch (action.type) {
-        case actions.SEARCH_SHOWS:
-            return Object.assign({}, state, {
-                searchTerm: action.searchTerm,
-                items : []
-            });
-        case actions.REQUEST_SHOWS:
-            return Object.assign({}, state, {
-                isFetching: true
-            });
-        case actions.RECEIVE_SHOWS:
-            return Object.assign({}, state, {
-                isFetching: false,
-                items: action.items
-            });
-        default:
-            return state
-    }
-}
+    }),
+    [types.REQUEST]: (state, action) => Object.assign({}, state, {
+        isFetching: true
+    }),
+    [types.RECEIVE]: (state, action) => Object.assign({}, state, {
+        isFetching: false,
+        items: action.payload.json.results
+    })
+};
+export const tvShows = createReducers({
+    isFetching: false,
+    didInvalidate: false, //for future stuff if we want some invariant to reload the data from the server
+    searchTerm: "",
+    items: []
+}, HANDLERS);

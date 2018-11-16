@@ -1,48 +1,25 @@
 import TVRepository from '../../repositories/TVRepository';
+const { createActions } = require('redux-arc');
 const repo = new TVRepository();
 
-/*
-  TV SHOWS (action type and an action creator next to it.
-  You may want to introduce a new kind of action for invalidating the data) 
-*/
-export const SEARCH_SHOWS = 'SEARCH_SHOW'
-export function searchShow(searchTerm) {
-  return {
-    type: SEARCH_SHOWS,
-    searchTerm
-  }
-}
-
-export const REQUEST_SHOWS = 'REQUEST_SHOWS'
-export function requestShows(searchTerm) {
-  return {
-    type: REQUEST_SHOWS,
-    searchTerm
-  }
-}
-
-export const RECEIVE_SHOWS = 'RECEIVE_SHOWS'
-export function receiveShows(searchTerm, json) {
-  return {
-    type: RECEIVE_SHOWS,
-    searchTerm,
-    items: json.results
-  }
-}
+export const { creators, types } = createActions('shows', {
+  search: null,
+  request: null,
+  receive: null,
+});
 
 /* 
     Async Actions (Fetchers for the TV Shows)
 */
-
 function fetchShows(searchTerm) {
   return dispatch => {
-    dispatch(requestShows(searchTerm));
+    dispatch(creators.request(searchTerm));
     
     return repo.search(searchTerm)
       .then(results => {
         return results.json();
       })
-      .then(json => dispatch(receiveShows(searchTerm, json)));
+      .then(json => dispatch(creators.receive({searchTerm, json})));
   }
 }
 

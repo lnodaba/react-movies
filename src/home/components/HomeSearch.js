@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { searchShow, fetchShowsIfNeeded } from '../actions/actions';
+import { fetchShowsIfNeeded, creators } from '../actions/actions';
 
 class HomeSearch extends Component {
 
@@ -24,11 +24,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onSearchTermChange: (evt) => {
             const searchTerm = evt.target.value;
-            dispatch(searchShow(searchTerm));
+            dispatch(creators.search(searchTerm));
         },
         onEnter: (evt, searchTerm) => {
             if (evt.key === 'Enter') {
-                console.log("I'm here wtf?");
                 dispatch(fetchShowsIfNeeded(searchTerm));
             }
         },
