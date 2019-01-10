@@ -1,6 +1,6 @@
 import * as actions from '../actions/actions';
 
-export function selectedTvShowDetails(
+export  function selectedTvShowDetails(
     state = {
         tvId: null,
         isFetching: true,
