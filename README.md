@@ -1,1 +1,1 @@
-This project was bootstrapped with [Create React App] A simple example for myself for learning purpose.
+This project was bootstrapped with [Create React App] A React project built on the top of the free TheMovieDB Api.
